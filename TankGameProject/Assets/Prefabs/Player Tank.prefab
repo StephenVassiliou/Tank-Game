@@ -224,7 +224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6606203813085723059
 Transform:
   m_ObjectHideFlags: 0
@@ -284,6 +284,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Speed: 12
   m_TurnSpeed: 180
+  m_DashSpeed: 70
+  m_JumpPower: 350
+  canJump: 1
+  jumpTimer: 1
+  canDash: 1
+  dashTimer: 1
 --- !u!114 &6606203813085723063
 MonoBehaviour:
   m_ObjectHideFlags: 0
