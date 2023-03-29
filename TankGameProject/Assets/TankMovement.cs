@@ -71,10 +71,15 @@ public class TankMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetKey("q") && canDash)
+        if (Input.GetKey("q") && Input.GetKey("w") && canDash)
         {
             m_Rigidbody.AddForce(transform.forward * m_DashSpeed);
             canDash = false;  
+        }
+        else if (Input.GetKey("q") && Input.GetKey("s") && canDash)
+        {
+            m_Rigidbody.AddForce(-transform.forward * m_DashSpeed);
+            canDash = false;
         }
         if (canDash == false)
         {
