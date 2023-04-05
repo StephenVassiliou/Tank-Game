@@ -13,10 +13,21 @@ public class TankShooting : MonoBehaviour
     // The force given to the shell when firing
     public float m_LaunchForce = 30f;
 
+
+    // Timer for faster shooting
+    public bool crazyShoot;
+    public float crazyShootTimer = 2;
+    private float origiCrazyShoot;
+
     private void Start()
     {
-        
+
     }
+
+    private void Awake()
+    {
+        origiCrazyShoot = crazyShootTimer;
+}
 
     // Update is called once per frame
     private void Update()
@@ -24,12 +35,31 @@ public class TankShooting : MonoBehaviour
         // TODO: Later on, we'll check with the 'Game Manager' to make 
         // sure the game isn't over
 
-        if(Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp("Fire1"))
         {
             Fire();
         }
-    }
 
+        if (Input.GetButton("Fire1") && Input.GetKey("e"))
+        {
+            m_LaunchForce = 60f;
+
+            crazyShootTimer -= Time.deltaTime;
+         
+        }
+        if (crazyShoot == false)
+        {
+            
+
+            
+
+            if (crazyShootTimer < 0)
+            {
+                crazyShoot = true;
+                crazyShootTimer = origiCrazyShoot;
+            }
+        }
+    }
     private void Fire()
     {
         // Create an instance of the shell and store a reference to its rigidbody
@@ -40,5 +70,6 @@ public class TankShooting : MonoBehaviour
         // Set the shell's velocity to the launch force in the fire 
         // position's forward direction
         shellInstance.velocity = m_LaunchForce * m_FireTransform.forward;
+        
     }
 }
